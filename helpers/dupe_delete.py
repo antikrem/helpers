@@ -1,3 +1,5 @@
+# Delete duplicates
+
 from hashlib import md5
 from os import path, listdir, remove, walk
 from base64 import b64encode

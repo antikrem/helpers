@@ -1,3 +1,5 @@
+# Detree folders
+
 import sys
 import os
 from shutil import rmtree, move
