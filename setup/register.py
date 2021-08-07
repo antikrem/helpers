@@ -1,9 +1,10 @@
 from winreg import *
 import os
+import sys
 
 from constants import * 
 
-PYTHON_INSTALL = "\"C:\Program Files\Python39\python.exe\""
+PYTHON_INSTALL = f'"{sys.executable}"'
 
 MUIVerb = 'MUIVerb'
 ExtendedSubCommandsKey = 'ExtendedSubCommandsKey'
@@ -30,7 +31,6 @@ def register_command(command_name, label) :
     add_value(key, MUIVerb, label)
 
     key = create_key(f'ContextMenus\\Helpers\\shell\\{command_name}\\command')
-    print(f'{PYTHON_INSTALL} \"{INSTALL_LOCATION}\\{command_name}.py\"')
     add_value(key, Default, f'{PYTHON_INSTALL} \"{INSTALL_LOCATION}\\{command_name}.py\"')
 
 def get_command_label(file) :
