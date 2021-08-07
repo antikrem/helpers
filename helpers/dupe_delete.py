@@ -37,7 +37,7 @@ def delete_dupes(dupe_list) :
         try :
             remove(file)
             print('Deleting file ', file)
-        except e:
+        except :
             print('Failed to delete', file)
 
 def main():
