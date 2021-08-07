@@ -1,17 +1,8 @@
 # Delete duplicates
 
 from hashlib import md5
-from os import path, listdir, remove, walk
+from os import path, getcwd, remove, walk
 from base64 import b64encode
-from sys import argv, exit
-
-
-def parse_args_for_directory() :
-    if len(argv) < 2 or not path.isdir(argv[1]):
-        print('Choose a directory')
-        exit(5)
-    else :
-        return argv[1]
 
 def get_file_list(directory) :
     file_list = []
@@ -50,7 +41,7 @@ def delete_dupes(dupe_list) :
             print('Failed to delete', file)
 
 def main():
-    directory = parse_args_for_directory()
+    directory = getcwd()
 
     files = get_file_list(directory)
 
