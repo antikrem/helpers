@@ -6,7 +6,7 @@ Registers some useful helper scripts to the Windows File Explorer context menu.
 
 ## Install
 1. Checkout repo
-2. Run `setup.bat` (with elevated privledges)
+2. Run `setup.bat` (with elevated privileges)
 
 ## Functionalities
 Simply right click in the folder you wish to excute a script in and click `Helpers -> [Script]`.
