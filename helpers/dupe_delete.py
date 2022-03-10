@@ -3,11 +3,16 @@
 from hashlib import md5
 from os import path, getcwd, remove, walk
 from base64 import b64encode
+from itertools import groupby
+from tokenize import group
+
+def as_path_and_size(file : str) -> tuple[int, str] :
+    return (path.getsize(file), file)
 
 def get_file_list(directory : str) -> list[str] :
     file_list = []
     for root, dirs, files in walk(directory) :
-        file_list.extend([(path.join(root, file)) for file in files])
+        file_list.extend( map(as_path_and_size, [path.join(root, file) for file in files]) )
     return file_list
 
 def hash_file(filepath) :
@@ -42,9 +47,16 @@ def delete_dupes(dupe_list) -> None:
 def main():
     directory = getcwd()
 
-    files = get_file_list(directory)
+    flatFiles = get_file_list(directory)
 
-    dupes = find_duplicates(files)
+    flatFiles.sort(key = lambda x: x[0])
+
+    dupes = []
+
+    for size, groupedFiles in groupby(flatFiles, lambda x: x[0]) :
+        files = list(map(lambda x: x[1], groupedFiles))
+        if len(files) > 1 :
+            dupes.extend(find_duplicates(files))
 
     delete_dupes(dupes)
 
