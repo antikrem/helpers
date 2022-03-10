@@ -4,10 +4,10 @@ from hashlib import md5
 from os import path, getcwd, remove, walk
 from base64 import b64encode
 
-def get_file_list(directory) :
+def get_file_list(directory : str) -> list[str] :
     file_list = []
     for root, dirs, files in walk(directory) :
-        file_list.extend([path.join(root, file) for file in files])
+        file_list.extend([(path.join(root, file)) for file in files])
     return file_list
 
 def hash_file(filepath) :
@@ -16,7 +16,7 @@ def hash_file(filepath) :
         file_hash = md5(f.read()).digest()
         return b64encode(file_hash).decode()            
 
-def find_duplicates(file_list) :
+def find_duplicates(file_list : list[str]) -> list[str] :
     # Dictionary of hash to file path
     hashes = {}
     dupe_list = []
@@ -31,9 +31,8 @@ def find_duplicates(file_list) :
 
     return dupe_list
 
-def delete_dupes(dupe_list) :
+def delete_dupes(dupe_list) -> None:
     for file in dupe_list :
-        
         try :
             remove(file)
             print('Deleting file ', file)
