@@ -17,7 +17,8 @@ code_file_extensions = (
     '.ts',
     '.tsx',
     '.html',
-    '.css'
+    '.css',
+    '.asm'
 )
 
 class ParsingError(Exception) :
