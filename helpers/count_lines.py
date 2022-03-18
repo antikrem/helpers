@@ -27,11 +27,11 @@ class ParsingError(Exception) :
     def __repr__(self):
         return str(type(self))
 
-def get_working_directory() :
+def get_working_directory() -> str :
     args = sys.argv[1:]
     return args[0] if len(args) > 0 else os.getcwd()
 
-def size(target) -> int :
+def size(target: str) -> tuple[int, int] :
     if os.path.isfile(target) :
         return [1,  sum(1 for _ in open(target))] if target.endswith(code_file_extensions) else [0, 0]
 
