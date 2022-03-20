@@ -15,7 +15,7 @@ Simply right click in the folder you wish to excute a script in and click `Helpe
 Recursivly count number of files and lines of code files. 
 
 ### Detree Folders
-Pulls all files in subdirectories to the current directory and removes all folders. 
+Moves all files in subdirectories to the current directory and removes all folders. 
 
 ### Delete Duplicates
 Deletes all duplicates files in the directory.
