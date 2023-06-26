@@ -18,7 +18,10 @@ code_file_extensions = (
     '.tsx',
     '.html',
     '.css',
-    '.asm'
+    '.asm',
+    '.lua',
+    '.vert',
+    '.frag'
 )
 
 class ParsingError(Exception) :
